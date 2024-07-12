@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <script type="text/javascript">
+    	function sendMessage() {
+        var msgTextBox = document.getElementById("msg-input")
+        var msgText = msgTextBox.value
+        var contentHolderDiv = document.getElementById("content-holder")
+
+        msgTextBox.value = ""
+
+        var yPosOffset = (contentHolderDiv.children.length == 0 && 0) || (contentHolderDiv.children.length*85) + 9
+
+
+        var liMessageHolder = document.createElement("li")
+        var pfpButtonHB = document.createElement("button")
+        var pfpImg = document.createElement("img")
+        var msgContentDiv = document.createElement("div")
+        var nameLabelStrong = document.createElement("strong")
+        var nameLabelSpan = document.createElement("span")
+        var textLabelSpan = document.createElement("span")
+
+        liMessageHolder.className = "apos msg-holder"
+        pfpButtonHB.className = "apos pfp-button transparent-bg"
+        pfpImg.className = "apos pfp-img"
+        pfpImg.src = "https://img.freepik.com/free-photo/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background_1258-65746.jpg"
+        msgContentDiv.className = "apos msg-content"
+        nameLabelSpan.className = "apos name-label"
+        nameLabelSpan.innerText = "Guy"
+        textLabelSpan.className = "apos message-label"
+        textLabelSpan.innerText = msgText
+
+        liMessageHolder.appendChild(pfpButtonHB)
+        liMessageHolder.appendChild(msgContentDiv)
+        pfpButtonHB.appendChild(pfpImg)
+        msgContentDiv.appendChild(nameLabelStrong)
+        msgContentDiv.appendChild(textLabelSpan)
+        nameLabelStrong.appendChild(nameLabelSpan)
+
+        liMessageHolder.style = "top:" + yPosOffset + "px;"
+        contentHolderDiv.appendChild(liMessageHolder)
+      }
+    </script>
+    <style type="text/css">
+      .apos {
+        position: absolute;
+        display: block;
+      }
+
+      .content-holder {
+        background-color: #252525;
+        width: 100%;
+        height: 80%;
+        padding: 10px;
+      }
+
+      .msg-holder {
+        width: calc(100% - 20px);
+        height: 75px;
+        background-color: #2f2f2f;
+      }
+
+      .pfp-button {
+        width: 56px;
+        height: 56px;
+      }
+
+      .pfp-img {
+        width: 80%;
+        height: 80%;
+        left: 10%;
+        top: 10%;
+        border-radius: 50%;
+      }
+
+      .msg-content {
+        width: calc(100% - 56px);
+        left: 56px;
+        height: 100%;
+      }
+
+      .name-label {
+        width: calc(100% - 5px);
+        height: 30%;
+        left: 5px;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 125%;
+      }
+
+      .message-label {
+        width: calc(100% - 5px);
+        height: 70%;
+        left: 5px;
+        top: 30%;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 100%;
+      }
+
+      .transparent-bg {
+        background-color: rgba(255, 255, 255, 0);
+      }
+
+      .msg-box {
+        background-color: #252525;
+        width: 80%;
+        height: calc(20% - 20px);
+        top: calc(80% + 40px);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        color: #ffffff;
+      }
+
+      .scroller {
+        overflow-y: scroll;
+      }
+
+      .send-btn {
+        width: calc(20% - 20px);
+        height: calc(20% - 20px);
+        top: calc(80% + 40px);
+        left: calc(80% + 40px);
+        background-color: #252525;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 50px;
+      }
+
+      button {
+        cursor: hand;
+        outline: none;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+   <div id="content-holder" class="apos content-holder scroller"></div>
+   <textarea id="msg-input" class="apos msg-box"></textarea>
+   <button id="send-button" class="apos send-btn" onclick="sendMessage()">
+     Send
+   </button>
+  </body>
+</html>
